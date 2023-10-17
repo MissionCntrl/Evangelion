@@ -3,7 +3,7 @@ import processing.core.PApplet;
 public class Angels {
     public boolean alive;
     public String displayString;
-    private String wantedString;
+    public String wantedString;
     private int type; //if 0, then type the phrase, if 1, math problem, if 2, trivia problem!
     public int x,y,xSpeed;
 

@@ -44,6 +44,9 @@ public class Game extends PApplet {
         for(Angels a : angelList){
             a.draw(this);
             a.move();
+            if(a.wantedString.equals(userInpt)){
+                a.alive = false;
+            }
             if(!a.alive){
                 angelList.remove(a);
             }
