@@ -41,16 +41,14 @@ public class Game extends PApplet {
             angelList.add(a);
             timer = 70;
         }
-        for(Angels a : angelList){
+        for(Angels a : angelList) {
             a.draw(this);
             a.move();
             if(a.wantedString.equals(userInpt)){
                 a.alive = false;
             }
-            if(!a.alive){
-                angelList.remove(a);
-            }
         }
+        System.out.println(userInpt);
 
 
     }
