@@ -10,6 +10,11 @@ public class Eva {
         this.x = x;
         this.y = y;
     }
+    public void draw(PApplet window){
+        window.fill(255,0,0);
+        window.ellipse( x,y,100,100);
+    }
+
     public boolean isAlive(){
         if(!alive){
             gameOver(window);
@@ -20,6 +25,6 @@ public class Eva {
     public void gameOver(PApplet window){
         window.fill(0,0,0);
         window.rect(0,0,800,800);
-        window.text("game over hehe",300,300);
+        window.text("game over hehe",400,400);
     }
 }

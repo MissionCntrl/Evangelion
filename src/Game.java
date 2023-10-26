@@ -1,4 +1,6 @@
 import processing.core.PApplet;
+import processing.core.PFont;
+
 import java.util.Scanner;
 
 import java.util.ArrayList;
@@ -11,18 +13,19 @@ public class Game extends PApplet {
     int x,y;
     int x1, y1;
     String userInpt;
+    PFont f;
+    Eva e;
     public void settings() {
         size(800, 800);   // set the window size
-
     }
 
     public void setup() {
         // TODO: initialize game variables
         angelList = new ArrayList<>();
-       String[] words = {"fa"};
         timer = 70;
         userInpt = "";
-
+        f = createFont("Arial", 12, true);
+        e = new Eva(400, 400);
     }
 
     /***
@@ -30,8 +33,12 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
+
+        textFont(f, 12);
+        text("test", 20, 40);
         timer--;
-        background(255);    // paint screen white
+        background(255);
+        e.draw(this);// paint screen white
         fill(0,255,0);          // load green paint color
         ellipse(mouseX, mouseY, 60, 60);  // draw circle at mouse loc
         if(timer <= 0) {
@@ -41,11 +48,18 @@ public class Game extends PApplet {
             angelList.add(a);
             timer = 70;
         }
-        for(Angels a : angelList) {
+        for(int i = 0; i<angelList.size(); i++) {
+            Angels a = angelList.get(i);
             a.draw(this);
-            a.move();
-            if(a.wantedString.equals(userInpt)){
+            textFont(f, 40);
+            fill(255,255,255);
+            text(a.wantedString, a.x - 10, a.y);
+            a.move(400);
+            if(a.wantedString.equals(userInpt) && a.x <= 600){
                 a.alive = false;
+                angelList.remove(a);
+                i--;
+                userInpt = "";
             }
         }
         System.out.println(userInpt);
@@ -53,13 +67,13 @@ public class Game extends PApplet {
 
     }
     public void keyPressed(){
-        userInpt += key;
         if (key == CODED){
-            if(keyCode == ENTER){
+            if(keyCode == UP){
                 userInpt = "";
             }
-        }
+        } else {userInpt += key;}
     }
+
 
     public static void main(String[] args) {
         PApplet.main("Game");
