@@ -23,7 +23,7 @@ public class Angels {
             ySpeed = -ySpeed;
         }
     }
-    //
+    //?
     public void draw(PApplet window){
         window.fill(255,0,0);
         window.ellipse(x,y,50,50);
