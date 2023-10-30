@@ -74,6 +74,10 @@ public class Game extends PApplet {
         } else {userInpt += key;}
     }
 
+    public boolean collision (Angels a){
+        if(a.x>=)
+    }
+
 
     public static void main(String[] args) {
         PApplet.main("Game");
