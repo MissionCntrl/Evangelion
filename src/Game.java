@@ -75,7 +75,7 @@ public class Game extends PApplet {
     }
 
     public boolean collision (Angels a){
-        if(a.x>=)
+        if(a.x>=350)
     }
 
 
