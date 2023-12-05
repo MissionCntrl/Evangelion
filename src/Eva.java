@@ -7,6 +7,8 @@ public class Eva {
     private PApplet window;
 
     public Eva(int x, int y){
+        this.alive = true;
+        lives = 5;
         this.x = x;
         this.y = y;
     }
@@ -26,7 +28,7 @@ public class Eva {
     }
 
     public boolean isAlive(){
-        if(!alive){
+            if(!alive) {
             gameOver(window);
             return false;
         }

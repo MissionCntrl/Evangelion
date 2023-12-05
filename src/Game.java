@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class Game extends PApplet {
     // TODO: declare game variables
     public ArrayList<Angels> angelList;
-    int timer;
+    int angelSpawntimer;
     Angels a;
-    int x,y;
+    int x, y;
     int x1, y1;
     String userInpt;
     PFont f;
     Eva e;
+
     public void settings() {
         size(800, 800);   // set the window size
     }
@@ -22,7 +23,9 @@ public class Game extends PApplet {
     public void setup() {
         // TODO: initialize game variables
         angelList = new ArrayList<>();
-        timer = 70;
+        Angels brack = new Angels(0, 700, 400, 10);
+        angelList.add(brack);
+        angelSpawntimer = 70;
         userInpt = "";
         f = createFont("Arial", 12, true);
         e = new Eva(400, 400);
@@ -36,26 +39,29 @@ public class Game extends PApplet {
 
         textFont(f, 12);
         text("test", 20, 40);
-        timer--;
+        angelSpawntimer--;
         background(255);
         e.draw(this);// paint screen white
-        fill(0,255,0);          // load green paint color
+        fill(0, 255, 0);          // load green paint color
         ellipse(mouseX, mouseY, 60, 60);  // draw circle at mouse loc
-        if(timer <= 0) {
-            x1 = (int)(Math.random()*1000 + 800);
-            y1 = (int)(Math.random()*750 + 50);
-            Angels a = new Angels(0,x1,y1,-2);
-            angelList.add(a);
-            timer = 70;
+        if (angelSpawntimer <= 0) {
+            for (int i = 0; i < 1; i++) {
+                x1 = (int) (Math.random() * 1000 + 800);
+                y1 = (int) (Math.random() * 750 + 50);
+                Angels a = new Angels(0, x1, y1, -2);
+                angelList.add(a);
+            }
+            angelSpawntimer = 70;
         }
-        for(int i = 0; i<angelList.size(); i++) {
+        for (int i = 0; i < angelList.size(); i++) {
             Angels a = angelList.get(i);
             a.draw(this);
             textFont(f, 40);
-            fill(255,255,255);
-            text(a.wantedString, a.x - 10, a.y);
-            a.move(400);
-            if(a.wantedString.equals(userInpt) && a.x <= 600){
+            fill(255, 255, 255);
+            text(a.wantedString, a.x - 15, a.y);
+            a.aimAt(300, 300);
+            a.move(300);
+            if (a.wantedString.equals(userInpt) && a.x <= 800) {
                 a.alive = false;
                 angelList.remove(a);
                 i--;
@@ -84,7 +90,9 @@ public class Game extends PApplet {
             if (keyCode == UP) {
                 userInpt = "";
             }
-        } else {userInpt += key;}
+        } else {
+            userInpt += key;
+        }
     }
 
     public static boolean collisions(Angels a) {
