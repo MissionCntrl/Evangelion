@@ -11,8 +11,18 @@ public class Eva {
         this.y = y;
     }
     public void draw(PApplet window){
-        window.fill(255,0,0);
-        window.ellipse( x,y,100,100);
+        if(alive == true){
+            window.fill(255,0,0);
+            window.rect( x,y,100,100);
+        }
+    }
+
+
+    public void minusLives(int lives){
+        this.lives -= lives;
+        if(lives <= 0) {
+            alive = false;
+        }
     }
 
     public boolean isAlive(){

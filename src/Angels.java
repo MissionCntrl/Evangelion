@@ -29,8 +29,7 @@ public class Angels {
         window.ellipse(x,y,50,50);
     }
     public void move(int moveTowards) {
-        if(x<=800) {
-            xSpeed = ((400- this.x) / 400);
+        if (x <= 800) {
             x += xSpeed;
             ySpeed = ((400- this.y) / 400);
             y += ySpeed;

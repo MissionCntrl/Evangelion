@@ -61,22 +61,37 @@ public class Game extends PApplet {
                 i--;
                 userInpt = "";
             }
+            collision(angelList, e);
         }
         System.out.println(userInpt);
 
 
     }
-    public void keyPressed(){
-        if (key == CODED){
-            if(keyCode == UP){
+
+
+    public static void collision(ArrayList<Angels> angelList, Eva e) {
+        for (int i = 0; i < angelList.size(); i++) {
+            Angels a = angelList.get(i);
+            if (collisions(a)) {
+                a.dieAngelDie();
+                e.minusLives(1);
+            }
+        }
+    }
+
+    public void keyPressed() {
+        if (key == CODED) {
+            if (keyCode == UP) {
                 userInpt = "";
             }
         } else {userInpt += key;}
     }
 
-    public boolean collision (Angels a){
-        if(a.x>=350){
-
+    public static boolean collisions(Angels a) {
+        if (a.x >= 300 && a.x <= 400) {
+            if (a.y >= 300 && a.y <= 400) {
+                return true;
+            }
         }
         return false;
     }
