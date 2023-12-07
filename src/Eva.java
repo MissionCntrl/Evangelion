@@ -1,9 +1,9 @@
 import processing.core.PApplet;
 
 public class Eva {
-    public int lives;
-    public boolean alive;
-    public int x, y;
+    private int lives;
+    private boolean alive;
+    private int x, y;
     private PApplet window;
 
     public Eva(int x, int y){
@@ -19,6 +19,17 @@ public class Eva {
         }
     }
 
+    public int getLives() {
+        return lives;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
     public void minusLives(int lives){
         this.lives -= lives;

@@ -25,6 +25,10 @@ public class Angels {
         }/**/
     }
 
+    public int getxSpeed() {
+        return xSpeed;
+    }
+
 
     public int getX(){
         return x;
