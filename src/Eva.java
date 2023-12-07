@@ -18,6 +18,10 @@ public class Eva {
             window.rect( x,y,100,100);
         }
     }
+    public void dieEvaDie(PApplet window){
+        this.alive = false;
+        gameOver(window);
+    }
 
     public int getLives() {
         return lives;

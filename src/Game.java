@@ -18,6 +18,7 @@ public class Game extends PApplet {
     int angelSpawntimer;
     Angels a;
     int x, y;
+    int timer = 0;
     int x1, y1;
     String userInpt;
     PFont f;
@@ -147,7 +148,7 @@ public class Game extends PApplet {
     public static void collision(ArrayList<Angels> angelList, Eva e) {
         for (int i = 0; i < angelList.size(); i++) {
             Angels a = angelList.get(i);
-            if (collisions(a)) {
+            if (collisions(a,e)) {
                 a.dieAngelDie();
                 e.minusLives(1);
             }
