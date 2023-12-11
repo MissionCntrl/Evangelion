@@ -1,5 +1,6 @@
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PImage;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -24,6 +25,7 @@ public class Game extends PApplet {
     PFont f;
     Eva e;
     int Score;
+    PImage katniss;
 
     public void settings() {
         size(800, 800);   // set the window size
@@ -39,6 +41,7 @@ public class Game extends PApplet {
         f = createFont("Arial", 12, true);
         e = new Eva(300, 300);
         Score = 0;
+        katniss = loadImage("KatnissBestie.png");
     }
 
     /***
@@ -47,6 +50,7 @@ public class Game extends PApplet {
      */
     public void draw() {
         if(e.getLives() >= 0) {
+            katniss.resize(50,300);
             textFont(f, 20);
             angelSpawntimer--;
             background(255);
@@ -121,18 +125,18 @@ public class Game extends PApplet {
         String dataReal = "";
         ArrayList<Integer> arr = new ArrayList<>();
          String[] words = data.split("\n");
-        System.out.println(words[1]);
         for (int i = 0; i < words.length; i++) {
             String str = words[i];
-            str= str.substring(8);
+            str= str.substring(7);
             str = str.trim();
             arr.add(Integer.parseInt(str));
         }
         Collections.sort(arr);
 
-        for (int i = 0; i < arr.size(); i++) {
-         dataReal+=arr.get(i);
-            dataReal+= "/n";
+        for (int i = arr.size()-1; i > 0; i--) {
+            dataReal+="Score: ";
+            dataReal+=arr.get(i);
+            dataReal+= "\n";
 
         }
         writeDataToFile("Leaderboard", dataReal, false);

@@ -1,11 +1,12 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Eva {
     private int lives;
     private boolean alive;
     private int x, y;
     private PApplet window;
-
+    private PImage katniss;
     public Eva(int x, int y){
         this.alive = true;
         lives = 5;
@@ -13,9 +14,10 @@ public class Eva {
         this.y = y;
     }
     public void draw(PApplet window){
-        if(alive == true){
+        if(alive){
             window.fill(255,0,0);
-            window.rect( x,y,100,100);
+            katniss = window.loadImage("KatnissBestie.png");
+            katniss.resize(50, 300);
         }
     }
     public void dieEvaDie(PApplet window){
