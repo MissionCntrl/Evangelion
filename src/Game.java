@@ -49,11 +49,11 @@ public class Game extends PApplet {
      * tick each object (have it update itself), and draw each object
      */
     public void draw() {
-        if(e.getLives() >= 0) {
+        if(e.getLives() > 0) {
             katniss.resize(50,300);
             textFont(f, 20);
             angelSpawntimer--;
-            background(255);
+            background(0);
             fill(0, 255, 0);
             e.draw(this);// paint screen white
             text("Score: " + Score, 20, 800);
@@ -63,7 +63,7 @@ public class Game extends PApplet {
                 for (int i = 0; i < 1; i++) {
                     x1 = (int) (Math.random() * 1000 + 800);
                     y1 = (int) (Math.random() * 750 + 50);
-                    Angels a = new Angels(0, x1, y1, -2);
+                    Angels a = new Angels(0, x1, y1, -7);
                     angelList.add(a);
                 }
                 angelSpawntimer = 70;
@@ -73,7 +73,7 @@ public class Game extends PApplet {
                 a.draw(this);
                 textFont(f, 40);
                 fill(255, 255, 255);
-                text(a.wantedString, a.getX() - 15, a.getY());
+                text(a.wantedString, a.getX(), a.getY());
                 a.aimAt(300, 300);
                 a.move(300);
                 if (collisions(a, e)) {
@@ -170,7 +170,7 @@ public class Game extends PApplet {
     }
 
     public static boolean collisions(Angels a, Eva e) {
-        if (a.getX() >= e.getX() && a.getX() <= e.getX() + 100) {
+        if (a.x - 25 < 400) {
             if (a.getY() >= e.getY() && a.getY() <= e.getY()+100) {
                 System.out.println("they collided dududu");
                 return true;

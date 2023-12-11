@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Angels {
     public boolean alive;
@@ -6,7 +7,7 @@ public class Angels {
     public String wantedString;
     private int type; //if 0, then type the phrase, if 1, math problem, if 2, trivia problem!
     public int x, y, xSpeed, ySpeed;
-
+    PImage joshUgly;
     public Angels(int type, int x, int y, int xSpeed) {
         this.alive = true;
         this.type = type;
@@ -39,9 +40,11 @@ public class Angels {
 
     //?
     public void draw(PApplet window) {
+        joshUgly = window.loadImage("uglyguy.png");
+        joshUgly.resize(50,50);
         if(alive == true) {
             window.fill(255, 0, 0);
-            window.ellipse(x, y, 50, 50);
+            window.image(joshUgly,x,y);
         }
 
     }

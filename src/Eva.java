@@ -14,10 +14,11 @@ public class Eva {
         this.y = y;
     }
     public void draw(PApplet window){
+        katniss = window.loadImage("KatnissBestie.png");
+        katniss.resize(80, 350);
         if(alive){
             window.fill(255,0,0);
-            katniss = window.loadImage("KatnissBestie.png");
-            katniss.resize(50, 300);
+            window.image(katniss,350,200);
         }
     }
     public void dieEvaDie(PApplet window){
