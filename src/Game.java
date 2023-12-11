@@ -56,7 +56,7 @@ public class Game extends PApplet {
             background(0);
             fill(0, 255, 0);
             e.draw(this);// paint screen white
-            text("Score: " + Score, 20, 800);
+         //   text("Score: " + Score, 20, 800);
             fill(0, 255, 0);          // load green paint color
             ellipse(mouseX, mouseY, 60, 60);  // draw circle at mouse loc
             if (angelSpawntimer <= 0) {
@@ -183,7 +183,7 @@ public class Game extends PApplet {
         try (FileWriter f = new FileWriter(filePath, appened);
              BufferedWriter b = new BufferedWriter(f);
              PrintWriter writer = new PrintWriter(b);) {
-            writer.println("Score: " + data);
+            writer.println("Score: "+ data);
 
 
         } catch (IOException error) {
