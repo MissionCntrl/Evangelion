@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
+
 public class Game extends PApplet {
     // TODO: declare game variables
     public ArrayList<Peeta> PeetaList;
@@ -34,10 +35,10 @@ public class Game extends PApplet {
 
     public void setup() {
         // TODO: initialize game variables
-        angelList = new ArrayList<>();
-        Angels brack = new Angels(0, 700, 400, 10);
-        angelList.add(brack);
-        angelSpawntimer = 70;
+        PeetaList = new ArrayList<>();
+        Peeta brack = new Peeta((int) (Math.random() * 2), 700, 400, 10, this);
+        PeetaList.add(brack);
+        PeetaSpawntimer = 20;
         userInpt = "";
         f = createFont("Arial", 12, true);
         e = new Katniss(300, 300);
@@ -53,8 +54,8 @@ public class Game extends PApplet {
             //katniss.resize(50, 300);
             image(fire,0,0);
             textFont(f, 20);
-            angelSpawntimer--;
-            background(0);
+            PeetaSpawntimer--;
+
             fill(0, 255, 0);
             e.draw(this);// paint screen white
             text("Score: " + Score, 20, 800);
@@ -62,8 +63,8 @@ public class Game extends PApplet {
                 for (int i = 0; i < 3; i++) {
                     x1 = (int) (Math.random() * 1000 + 800);
                     y1 = (int) (Math.random() * 750 + 50);
-                    Angels a = new Angels(0, x1, y1, -7);
-                    angelList.add(a);
+                    Peeta a = new Peeta((int) (Math.random() * 2), x1, y1, -9, this);
+                    PeetaList.add(a);
                 }
                 double spawnSetter = Score - 80;
                 if(spawnSetter > 0 && PeetaSpawntimer > 30) {
