@@ -1,13 +1,13 @@
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Eva {
+public class Katniss {
     private int lives;
     private boolean alive;
     private int x, y;
     private PApplet window;
     private PImage katniss;
-    public Eva(int x, int y){
+    public Katniss(int x, int y){
         this.alive = true;
         lives = 5;
         this.x = x;
